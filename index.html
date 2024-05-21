@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>VBS Interactive SOP</title>
+        <link
+            rel="stylesheet"
+            href="index.css" />
+    </head>
+    <body>
+        <h1>VBS Interactive Workflow</h1>
+        <div class="app-canvas">
+            <div class="tab-canvas">
+                <div class="tab-selector">
+                    <div
+                        class="tab tab-active"
+                        id="onboarding">
+                        Onboarding
+                    </div>
+                    <div
+                        class="tab"
+                        id="consult">
+                        Consult
+                    </div>
+                    <div
+                        class="tab"
+                        id="testing">
+                        Testing
+                    </div>
+                    <div
+                        class="tab"
+                        id="followup">
+                        Followup
+                    </div>
+                    <div
+                        class="tab"
+                        id="results">
+                        Results
+                    </div>
+                    <div
+                        class="tab"
+                        id="findings">
+                        Findings
+                    </div>
+                    <div
+                        class="tab"
+                        id="checkin">
+                        Check-In
+                    </div>
+                </div>
+                <div class="tab-container">
+                    <div
+                        class="tab-content"
+                        id="onboarding"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="consult"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="testing"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="followup"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="results"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="findings"></div>
+                    <div
+                        class="tab-content tab-hidden"
+                        id="checkin"></div>
+                </div>
+            </div>
+        </div>
+        <div class="info-label">Info</div>
+        <div class="info-panel">
+            <div
+                class="column"
+                id="col-buttons">
+                <div
+                    class="button"
+                    id="refresh">
+                    Refresh
+                </div>
+                <div
+                    class="button"
+                    id="save">
+                    Save
+                </div>
+            </div>
+            <div
+                class="column"
+                id="col-names">
+                <div class="label short">Client:</div>
+                <div class="content short">$CLIENT</div>
+                <div class="label short">Coach:</div>
+                <div class="content short">$COACH</div>
+            </div>
+            <div
+                class="column"
+                id="col-pipe">
+                <div class="label">Opportunity:</div>
+                <div class="content">$OPPORTUNITY</div>
+                <div class="label">Pipeline Stage:</div>
+                <div class="content">%PIPE_STAGE</div> 
+            </div>
+            <div class="content last-refresh">Refreshed: $LAST_REFRESH</div>
+            <div class="content last-save">Saved: $LAST_SAVE</div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

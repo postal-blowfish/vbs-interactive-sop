@@ -1,16 +1,19 @@
 :root {
     --page-color-fg: white;
     --page-color-bg: #303030;
-    --page-font-sans: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
-    --page-font-serif: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;;
+    --page-font-sans: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    --page-font-serif: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    --page-font-mono: "Courier New", Courier, monospace;
     --page-font-size: 16px;
-    --canvas-color-bg: #dcbf71;
+    --canvas-color-bg: rgba(198, 172, 102, 1);
     --canvas-color-fg: black;
-    --info-color-bg: #796e4f;
-    --app-color: #718EDC;
-    --tab-bg: rgba(0, 0, 0, 0.25); 
-    --tab-bg-hover: rgba(255, 255, 255, 0.25); 
-    --btn-bg-hover: rgba(255, 255, 255, 0.5);
+    --info-color-bg: rgba(95, 80, 65, 1); /*#796e4f;*/
+    --app-color: #718edc;
+    --tab-bg: rgba(0, 0, 0, 0.35);
+    --tab-bg-hover: rgba(255, 255, 255, 0.3);
+    --btn-bg: rgba(255, 248, 224, 0.75);
+    --btn-bg-hover: rgba(255, 248, 224, 1);
 }
 
 body {
@@ -28,7 +31,21 @@ h1 {
     text-shadow: 3px 5px 6px black;
 }
 
-.app-canvas {
+a {
+    display: grid;
+    grid-column: 1;
+    margin: 0.75em calc(50% + 2.5em) 0.75em 0.75em;
+    padding: 0.5em;
+    background-color: var(--tab-bg-hover);
+}
+
+sc {
+    font-variant: small-caps;
+    text-decoration: underline;
+    padding-left: 0.35em;
+}
+
+.appCanvas {
     margin-inline: 20%;
     margin-bottom: 0.5rem;
     padding: 1rem;
@@ -39,17 +56,14 @@ h1 {
     box-shadow: 3px 5px 6px black;
 }
 
-.tab-canvas {
+.tabCanvas {
     display: grid;
     grid-template-rows: auto 1fr;
-    /*grid-gap: 1em*/
-    /*order: 1px solid blue;*/
 }
 
-.tab-selector {
+.tabSelector {
     display: flex;
     justify-content: space-around;
-    /*border: 1px solid red;*/
 }
 
 .tab {
@@ -67,11 +81,11 @@ h1 {
     background-color: var(--tab-bg-hover);
 }
 
-.tab-active {
+.tabActive {
     background-color: var(--tab-bg-hover);
 }
 
-.tab-container {
+.tabContainer {
     padding: 1.5rem;
     background-color: var(--tab-bg-hover);
     border-bottom-left-radius: 0.5rem;
@@ -79,16 +93,27 @@ h1 {
     border: 1px solid var(--canvas-color-fg);
 }
 
-.tab-content {
-    padding: 5rem;
-    border: 1px dotted blue;
+.tabContent {
+    margin: -0.5rem;
 }
 
-.tab-hidden {
+.tabHidden {
     display: none;
 }
 
-.info-panel {
+.section {
+    margin: -0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0rem;
+}
+
+.sectionDormant {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
+}
+
+.infoPanel {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
@@ -98,14 +123,14 @@ h1 {
     margin-bottom: 0.5rem;
     padding-inline: 1rem;
     background-color: var(--info-color-bg);
-    color: var(--canvas-color-fg);
+    color: var(--btn-bg);
     border: 2px solid var(--canvas-color-fg);
     border-radius: 1.25rem;
     box-shadow: 3px 5px 6px black;
-    font-size: 13px;
+    font-size: 12px;
 }
 
-.info-label {
+.infoLabel {
     font-family: var(--page-font-sans);
     font-size: 12px;
     font-weight: bold;
@@ -118,68 +143,127 @@ h1 {
 .label {
     grid-column: 1;
     font-weight: bold;
-    justify-content: right;
-    /*text-align: right;*/
-    /*border: 1px dotted blue;*/
+    font-family: var(--page-font-serif);
 }
 
 .content {
     grid-column: 2 / span 3;
-    justify-content: left;
-    padding-left: 0.5em;
-    /*text-align: left;*/
-    /*border: 1px dotted red;*/
 }
 
-.label, 
+.labelInfo {
+    font-family: var(--page-font-sans);
+    font-weight: bolder;
+    justify-content: right;
+}
+
+.contentInfo {
+    font-family: var(--page-font-mono);
+    padding-left: 0em;
+    justify-content: left;
+}
+
+.label,
 .content {
     flex: 1;
     display: flex;
     /*justify-content: center;*/
 }
 
+.helper {
+    margin-right: calc(70%);
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    background-color: #404040;
+    border-radius: 5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    border: 1px dotted black;
+}
+
+.bulbIcon {
+    grid-row: 1;
+    grid-column: 1;
+    padding: 0.1em;
+    margin-inline: 0.25em;
+    font-size: 16px;
+}
+
+.labelHelper {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 12px;
+    font-family: var(--page-font-sans);
+}
+
 .button {
-    padding: 0.35rem 0.25rem;
-    background-color: var(--tab-bg-hover);
+    padding: 0.25rem 1rem;
+    background-color: var(--btn-bg);
     color: var(--canvas-color-fg);
     text-align: center;
+    font-variant: small-caps;
     border: 1px solid black;
     cursor: pointer;
-    border-radius: 0.5rem;
+    border-radius: 0.7rem;
     font-size: 18px;
 }
 
 .button:hover {
     background-color: var(--btn-bg-hover);
+    box-shadow: 3px 5px 6px black;
+}
+
+.helperDormant,
+.buttonDormant {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.buttonDormant:hover {
+    background-color: var(--btn-bg);
+    opacity: 0.5;
+    box-shadow: 0 0;
+}
+
+.buttonContainer {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    align-items: center;
 }
 
 .column {
     padding: 0.25em;
 }
 
-.last-refresh {
+.lastRefresh {
     font-size: 12px;
     grid-row: 2;
     grid-column: 2 / span 3;
+    font-family: var(--page-font-serif);
     font-style: italic;
     padding-bottom: 0.25rem;
 }
 
-.last-save {
+.lastSave {
     font-size: 12px;
     grid-row: 2;
     grid-column: 4 / span 5;
+    font-family: var(--page-font-serif);
     font-style: italic;
     padding-bottom: 0.25rem;
 }
 
-#col-buttons {
+#columnButtons {
     grid-column: 1;
     display: grid;
     gap: 0.25rem;
 }
 
-#col-names {
+#columnNames {
     grid-column: 2 / 4;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -190,7 +274,7 @@ h1 {
     border-radius: 0.25rem;
 }
 
-#col-pipe {
+#columnPipeline {
     grid-column: 4 / 8;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

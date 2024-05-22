@@ -180,6 +180,7 @@ sc {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
+    cursor: help;
     border: 1px dotted black;
 }
 
@@ -285,4 +286,17 @@ sc {
     border-radius: 0.25rem;
     border-top-right-radius: 0.75rem;
     border-bottom-right-radius: 0.75rem;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(40 ,40, 40, 0.85);
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    display: none;
+    z-index: 1000;
+    white-space: pre-wrap;
+    font-size: 12px;
+    max-width: 20em;
 }
